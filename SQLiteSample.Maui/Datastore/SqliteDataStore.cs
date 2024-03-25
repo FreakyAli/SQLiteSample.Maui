@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿#nullable disable
+using SQLite;
 
 namespace SQLiteSample.Maui.Datastore;
 
