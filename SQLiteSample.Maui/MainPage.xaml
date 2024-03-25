@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:samples="clr-namespace:SQLiteSample.Maui"
+             x:DataType="samples:MainViewModel"
+             x:Name="this"
+             x:Class="SQLiteSample.Maui.MainPage">
+
+    <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, *" RowSpacing="10" Padding="10">
+        <Entry FontSize="Large" Text="{Binding EntryText}" Grid.Column="0" Grid.Row="0"/>
+        <Button Text="Add"  Command="{Binding AddCommand}" Grid.Column="1" Grid.Row="0"/>
+        <CollectionView Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        ItemSizingStrategy="MeasureFirstItem"
+                        ItemsSource="{Binding Groceries}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="samples:GroceryModel">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                   BackgroundColor="IndianRed"
+                                   Command="{Binding Source={x:Reference this}, Path=BindingContext.DeleteCommand}"
+                                   CommandParameter="{Binding}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="3" Padding="10">
+                            <Label Grid.Column="0" FontSize="Large" Text="{Binding Name}"/>
+                        </Border>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+
