@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#nullable disable
+using System.Collections;
 using System.Linq.Expressions;
 
 namespace SQLiteSample.Maui.Datastore;
@@ -71,7 +72,7 @@ public class SqliteService : ISqliteService
         catch (Exception)
         {
             //Todo: Log this exception.
-            return default(T);
+            return default;
         }
     }
 
