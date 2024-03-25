@@ -39,7 +39,7 @@ public sealed class SqliteDataStore
                         Environment.SpecialFolder.LocalApplicationData),
                         DataStoreConstants.DatabaseName
                         );
-        SqliteDataStore.CreateSharedDataStore(databasePath);
+        CreateSharedDataStore(databasePath);
         await CreateAllTablesAsync();
     }
 
